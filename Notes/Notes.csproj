@@ -13,4 +13,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.6" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConfigFiles\" />
+  </ItemGroup>
 </Project>
