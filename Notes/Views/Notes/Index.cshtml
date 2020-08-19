@@ -1,24 +1,42 @@
-﻿@{
+﻿@model List<Notes.Models.Note>
+
+@{
     ViewData["Title"] = "Index";
 }
 
 <div class="container row p-0 m-0">
-    <div class="col-10 mt-5 p-0">
+    <div class="col-10 mt-5 pl-3">
         <h2 class="text-info">My Notes</h2>
     </div>
-    <div class="col-2 mt-5 p-0">
+    <div class="col-2 mt-5 pr-3">
         <a class="btn btn-info form-control text-white">+ New Note</a>
     </div>
 
-    <div class="col-12 border p-3 mt-5">
-        <table class="table table-striped table-bordered" style="width:100%;">
-            <thead>
+    <div class="col-12 p-3 mt-5">
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped table-bordered" style="width:100%;">
                 <tr>
                     <th></th>
                     <th></th>
                     <th></th>
                 </tr>
-            </thead>
-        </table>
+                @foreach (var note in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => note.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => note.Date_Created)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>You haven't created any notes</p>
+        }
     </div>
 </div>

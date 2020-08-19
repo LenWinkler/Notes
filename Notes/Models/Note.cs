@@ -19,6 +19,6 @@ namespace Notes.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTime Date_Created { get; set; }
+        public DateTime Date_Created { get; set; } = DateTime.Now;
     }
 }
