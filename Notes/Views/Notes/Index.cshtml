@@ -9,26 +9,30 @@
         <h2 class="text-info">My Notes</h2>
     </div>
     <div class="col-2 mt-5 pr-3">
-        <a class="btn btn-info form-control text-white">+ New Note</a>
+        <a type="button" class="btn btn-info form-control text-white">+ New Note</a>
     </div>
 
     <div class="col-12 p-3 mt-5">
         @if (Model.Count() > 0)
         {
             <table class="table table-striped table-bordered" style="width:100%;">
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                <tr class="d-flex">
+                    <th class="col-6"></th>
+                    <th class="col-4"></th>
+                    <th class="col-2"></th>
                 </tr>
                 @foreach (var note in Model)
                 {
-                    <tr>
-                        <td>
+                    <tr class="d-flex">
+                        <td class="col-6">
                             @Html.DisplayFor(m => note.Title)
                         </td>
-                        <td>
+                        <td class="col-4">
                             @Html.DisplayFor(m => note.Date_Created)
+                        </td>
+                        <td class="col-2 text-align-center">
+                            <a type="button" class="btn btn-success text-white">Edit</a>
+                            <button class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 }
