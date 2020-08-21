@@ -22,11 +22,23 @@ namespace Notes.Controllers
 
         public IEnumerable<Note> AllNotes { get; set; }
 
+        public Note SingleNote { get; set; }
+
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
             AllNotes = await _db.Notes.ToListAsync();
             return View(AllNotes);
+        }
+
+        public IActionResult Note(int id)
+        {
+            SingleNote = _db.Notes.FirstOrDefault(u => u.Id == id);
+            if (SingleNote == null)
+            {
+                return NotFound();
+            }
+            return View(SingleNote);
         }
     }
 }

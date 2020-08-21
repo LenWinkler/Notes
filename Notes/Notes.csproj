@@ -16,6 +16,5 @@
   <ItemGroup>
     <Folder Include="ConfigFiles\" />
     <Folder Include="Views\Notes\" />
-    <Folder Include="Views\Note\" />
   </ItemGroup>
 </Project>
