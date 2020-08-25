@@ -9,7 +9,7 @@
         <h2 class="text-info">My Notes</h2>
     </div>
     <div class="col-2 mt-5 pr-3">
-        <a type="button" class="btn btn-info form-control text-white">+ New Note</a>
+        <a type="button" asp-action="Upsert" class="btn btn-info form-control text-white">+ New Note</a>
     </div>
 
     <div class="col-12 p-3 mt-5">
@@ -31,7 +31,7 @@
                             @Html.DisplayFor(m => note.Date_Created)
                         </td>
                         <td class="col-2 text-align-center">
-                            <a type="button" class="btn btn-success text-white">Edit</a>
+                            <a type="button" asp-action="Upsert" asp-route-id="@(note.Id)" class="btn btn-success text-white">Edit</a>
                             <button class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
