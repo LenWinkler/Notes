@@ -15,6 +15,9 @@ namespace Notes.Controllers
 
         private readonly ApplicationDbContext _db;
 
+        [BindProperty]
+        public Note ControllerNote { get; set; }
+
         public NotesController(ApplicationDbContext db)
         {
             _db = db;
@@ -24,7 +27,6 @@ namespace Notes.Controllers
 
         public Note SingleNote { get; set; }
 
-        // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
             AllNotes = await _db.Notes.ToListAsync();
@@ -40,5 +42,24 @@ namespace Notes.Controllers
             }
             return View(SingleNote);
         }
+
+        public IActionResult Upsert(int? id)
+        {
+            ControllerNote = new Note();
+            if (id == null)
+            {
+                // create
+                return View(ControllerNote);
+            }
+            //update
+            ControllerNote = _db.Notes.FirstOrDefault(u => u.Id == id);
+            if (ControllerNote == null)
+            {
+                return NotFound();
+            }
+            return View(ControllerNote);
+        }
+
+
     }
 }
