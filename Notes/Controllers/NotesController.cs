@@ -60,6 +60,26 @@ namespace Notes.Controllers
             return View(ControllerNote);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert()
+        {
+            if (ModelState.IsValid)
+            {
+                if (ControllerNote.Id == 0)
+                {
+                    // create
+                    _db.Notes.Add(ControllerNote);
+                }
+                else
+                {
+                    _db.Notes.Update(ControllerNote);
+                }
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(ControllerNote);
+        }
 
     }
 }
