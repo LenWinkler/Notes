@@ -30,6 +30,7 @@ namespace Notes.Controllers
         public async Task<IActionResult> Index()
         {
             AllNotes = await _db.Notes.ToListAsync();
+            AllNotes = AllNotes.OrderByDescending(n => n.Date_Created).ToList();
             return View(AllNotes);
         }
 
